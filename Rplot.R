@@ -1,5 +1,6 @@
 rm(list = ls())
 
+#加载R包
 library(tidyr)
 library(dplyr)
 library(data.table)
@@ -11,12 +12,12 @@ library(rJava)
 library(xlsxjars)
 library(xlsx)
 
-
+#设置路径
 getwd()
 setwd("E:\\qianpai")
 dir()
 
-####################################################
+#数据读取####################################################
 xybasetotal <- fread('xybase.csv',encoding = 'UTF-8')
 xydzdtotal <- fread('xydzd0807.csv',encoding = 'UTF-8')
 jingdongzhifubao <- fread('支付宝京东.csv',encoding = 'UTF-8')
@@ -75,10 +76,6 @@ xydzd1_3 %>%
   xlab("月份")+
   ylab("每月回款金额")
 
-
-
-
-
 ###8-10个月#####################################################3
 xydzd1$copy <- paste0(xydzd1$year,"年",xydzd1$month)
 xydzd1_4 <- xydzd1 %>% filter(kehu %in% c("拉卡拉","马上金融","亨元金融","众安保险-智联"))
@@ -92,7 +89,6 @@ ggplot(xydzd1_4,aes(copy,sumhkje,colour=factor(kehu),shape=factor(kehu)))+
 
 
 ###7个月#####################################################3
-
 xydzd1_5 <- xydzd1 %>% filter(kehu %in% c("唯品会",
                                           "众安保险","众安保险-速贷宝","众安保险-小确信",
                                           "众安保险-员工贷"))
